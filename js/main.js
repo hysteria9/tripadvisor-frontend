@@ -33,7 +33,7 @@ $.addEventListener("DOMContentLoaded", () => {
     console.log(newUserData);
 
     const response = await axios.post(
-      "http://localhost:3000/signup-form",
+      "https://8daa4f001c8e.ngrok.io/signup-form",
       newUserData
     );
     console.log(response);
