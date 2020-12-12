@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/fonts/stylesheet.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Import du fichier main.js -->
+    <script src="./js/main.js"></script>
+    <!-- Import d'axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Tourisme à Buenos Aires</title>
+</head>
+
+<body>
+    <div class="modal signup-modal" id="signup-modal">
+        <div class="form-container">
+            <img src="./assets/img/Tripadvisor_square..svg" id="round-logo" alt="Tripadvisor logo">
+            <i class="far fa-times-circle" id="signup-close-modal"></i>
+            <h2>Inscrivez-vous à Tripadvisor</h2>
+            <form id="signup-form" action="" method="GET">
+                <input type="text" required name="firstname" id="firstname" placeholder="Prénom" autocomplete="on">
+                <input type="text" required name="lastname" id="lastname" placeholder="Nom" autocomplete="on">
+                <input type="email" required name="email" id="signup-email" placeholder="Email" autocomplete="on">
+                <input type="password" required name="password" id="signup-password" placeholder="Mot de passe">
+                <textarea name="description" id="description" rows="5" cols="50"
+                    placeholder="A propos de vous..."></textarea>
+                <button type="submit">Envoyer le formulaire</button>
+
+            </form>
+            <span id="signup2login">Vous êtes déjà inscrit ? <a href="#">Connectez-vous</a></span>
+        </div>
+    </div>
+    <div class="modal login-modal" id="login-modal">
+        <div class="form-container">
+            <img src="./assets/img/Tripadvisor_lockup_horizontal_registered.svg" id="monochrome-logo"
+                alt="Tripadvisor logo">
+            <i class="far fa-times-circle" id="login-close-modal"></i>
+            <form id="login-form" action="" method="GET">
+                <input type="email" name="email" id="login-email" placeholder="Email" autocomplete="on">
+                <input type="password" name="password" id="login-password" placeholder="Mot de passe">
+                <button type="submit">Connexion</button>
+            </form>
+            <span>En poursuivant, vous acceptez nos <a href="#"><strong>Conditions d'utilisation</strong></a> et vous
+                confirmez que vous avez lu notre <a href="#"><strong>Politique de confidentialité et d'utilisation des
+                        cookies</strong></a>.</span>
+        </div>
+    </div>
+    <header>
+        <div id="top-bar" class="container">
+            <!--<div id="top-left-bar">-->
+            <img id="hz-logo" src="./assets/img/tripadvisor_horizontal_logo.svg" alt="Tripadvisor horizontal logo =">
+            <div class="search-bar-container">
+                <img id="magnifier-icon" src="./assets/icons/search.svg" alt="search button">
+                <input type="search" id="site-search" name="search-bar">
+            </div>
+            <!--</div>-->
+
+            <nav id="top-right-bar">
+                <button class="top-right-light-btn top-right-btn" id="publish-icon" name="publish">
+                    <img src="./assets/icons/add.svg" alt="publish button">
+                    <span class="top-right-btn-label">Publier</span>
+                </button>
+                <button class="top-right-light-btn top-right-btn" id="alerts-icon" name="alerts">
+                    <img src="./assets/icons/alerts.svg" alt="alerts button">
+                    <span class="top-right-btn-label">Alertes</span>
+                </button>
+                <button class="top-right-light-btn top-right-btn" id="travels-icon" name="travels">
+                    <img src="./assets/icons/heart.svg" alt="travels button">
+                    <span class="top-right-btn-label">Voyages</span>
+                </button>
+                <button class="dark-btn top-right-btn" id="login-btn" name="login">Connectez-vous</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>
+                <span id="title-salmon" class="text-salmon">Explorez</span> Buenos Aires
+            </h1>
+            <nav id="nav-bar">
+                <button class="nav-btn">
+                    <span class="nav-text-button">Conseils de voyage</span>
+                    <img class="nav-icon-button" src="./assets/icons/flag.svg" alt="Conseils de voyage">
+                </button>
+                <button class="nav-btn">
+                    <span class="nav-text-button">Hôtels</span>
+                    <img class="nav-icon-button" src="./assets/icons/bed.svg" alt="Hôtels">
+                </button>
+                <button class="nav-btn">
+                    <span class="nav-text-button">Location de vacances</span>
+                    <img class="nav-icon-button" id="rent-icon" src="./assets/icons/rent.svg"
+                        alt="Location de vacances">
+                </button>
+                <button class="nav-btn">
+                    <span class="nav-text-button">Activités</span>
+                    <img class="nav-icon-button" src="./assets/icons/ticket.svg" alt="Activités">
+                </button>
+                <button class="nav-btn">
+                    <span class="nav-text-button">Restaurants</span>
+                    <img class="nav-icon-button" src="./assets/icons/restaurants.svg" alt="Restaurants">
+                </button>
+                <button class="nav-btn">
+                    <span class="nav-text-button">Forums de voyage</span>
+                    <img class="nav-icon-button" src="./assets/icons/forums.svg" alt="Forums de voyage">
+                </button>
+                <button class="nav-btn">
+                    <span class="nav-text-button">Plus</span>
+                    <img class="nav-icon-button" src="./assets/icons/three_pts.svg" alt="Plus">
+                </button>
+            </nav>
+            <div id="storefront-photos">
+                <div id="storefront-left-photos">
+                    <img id="left-photo" class="opacity-on-hover" src="./assets/img/buenos-aires.jpg"
+                        alt="buenos-aires picture">
+                    <div id="gallery-btn">
+                        <img id="gallery-icon" src="./assets/icons/paysage.svg" alt="gallery icon">
+                        <button id="gallery-text-btn">Toutes les photos</button>
+                    </div>
+                </div>
+                <div id="storefront-right-photos">
+                    <img id="storefront-top-right-photo" class="opacity-on-hover" src="./assets/img/puerto-madero.jpg"
+                        alt="Puerto Madero">
+                    <img id="storefront-bottom-right-photo" class="opacity-on-hover"
+                        src="./assets/img/jardim-japones.jpg" alt="Jardim japones">
+                </div>
+            </div>
+            <nav id="localisation-nav">
+                <div id="localisation-left">
+                    <p class="localisation-nav-text">Amérique du Sud</p>
+                    <i class="fas fa-chevron-right fa-xs localisation-left-icon"></i>
+                    <p class="localisation-nav-text">Argentine</p>
+                    <i class="fas fa-chevron-right fa-xs localisation-left-icon"></i>
+                    <p class="localisation-nav-text">District fédéral autonome de Buenos Aires</p>
+                    <i class="fas fa-chevron-right fa-xs localisation-left-icon"></i>
+                    <p class="localisation-nav-text">Buenos Aires</p>
+                    <i class="fas fa-sort-down localisation-left-icon"></i>
+                </div>
+                <div id="localisation-right">
+                    <p>Visiter : Buenos Aires</p>
+                </div>
+            </nav>
+            <div id="city-description">
+                <div id="city-description-text">
+                    <h2>
+                        Une ville cosmopolite qui émerveille par son architecture, sa passion pour la danse et sa vie
+                        nocturne animée
+                    </h2>
+                    <p>
+                        Le berceau du tango est, comme la danse elle-même, une ville séduisante et débordante d'énergie.
+                        Les vieux quartiers s'animent à la nuit tombée et comptent de nombreux restaurants romantiques.
+                        Admirez l'héritage européen qui se révèle clairement dans l'architecture des rues, boulevards et
+                        parcs de Buenos Aires. Le plus vieux bar de la ville, le Café Tortoni, vous ramènera en 1858 et
+                        le spectaculaire Teatro Colón est toujours aussi impressionnant qu'en 1908. La capitale du
+                        shopping d'Amérique latine vous transportera par son vaste choix le long de ses grands
+                        boulevards larges et impressionnants.
+                    </p>
+                </div>
+                <div id="city-description-plan">
+                    <div id="city-description-CTA">
+                        <h2 class="CTA-item">
+                            Commencez à organiser Buenos Aires
+                        </h2>
+                        <p class="CTA-item">
+                            Créez un voyage pour enregistrer et organiser toutes vos idées et les visualiser sur une
+                            carte.
+                        </p>
+                        <button class="dark-btn CTA-item">
+                            Créez un voyage
+                        </button>
+                    </div>
+                    <img id="city-description-map" src="./assets/img/map.png" alt="">
+                </div>
+            </div>
+            <section id="advice-section">
+                <div class="section-title">
+                    <div class="section-line"></div>
+                    <h2 class="section-text">Conseils de voyage</h2>
+                    <div class="section-line"></div>
+                </div>
+                <a href="#">Tout afficher</a>
+                <div id="avice-CTA">
+                    <button class="lightgrey-border-btn">
+                        <img src="./assets/img/sun.svg" alt="Meilleure période pour visiter">
+                        <p class="advice-btn-text">Meilleure période pour visiter</p>
+                    </button>
+                    <button class="lightgrey-border-btn">
+                        <img src="./assets/img/walk.svg" alt="Se déplacer">
+                        <p class="advice-btn-text">Se déplacer</p>
+                    </button>
+                    <button class="lightgrey-border-btn">
+                        <img src="./assets/img/cheers.svg" alt="Coutumes locales">
+                        <p class="advice-btn-text">Coutumes locales</p>
+                    </button>
+                    <button class="lightgrey-border-btn">
+                        <img src="./assets/img/advices.svg" alt="Conseils de pros">
+                        <p class="advice-btn-text">Conseils de pros</p>
+                    </button>
+                </div>
+
+            </section>
+            <section id="unmissable">
+                <div class="section-title">
+                    <div class="section-line"></div>
+                    <h2 class="section-text">Immanquable à Buenos Aires</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div id="divertir" class="caroussel">
+                    <div id="divertir-theme" class="caroussel-theme">
+                        <h2>Se divertir</h2>
+                        <p>Des lieux à voir, des rues à explorer et des expériences emblématiques à Buenos Aires.</p>
+                        <a href="#">Tout afficher</a>
+                    </div>
+                    <div class="caroussel-items">
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/opera.jpg" class="opacity-on-hover" alt="Teatro Colón">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Teatro Colon</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">24 090 avis</span>
+                                </div>
+                                <p class="category">Théatres</p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/museum-of-latin-american.jpg" class="opacity-on-hover"
+                                    alt="Art Museum of latin-american">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Musée d’Art latino-américain de Buenos Aires</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">8 908 avis</span>
+                                </div>
+                                <p class="category">Musées</p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/recoleta-cemetery.jpg" class="opacity-on-hover"
+                                    alt="Recoleta Cementery">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Recoleta Cementery</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">26 654 avis</span>
+                                </div>
+                                <p class="category">Cimetières, Lieux d'intérêts</p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/recoleta-cemetery.jpg" class="opacity-on-hover"
+                                    alt="Recoleta Cementery">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Recoleta Cementery</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">26 654 avis</span>
+                                </div>
+                                <p class="category">Cimetières, Monuments & Points d'intérêt</p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/the-colorful-street.jpg" class="opacity-on-hover" alt="La boca">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>La Boca</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">4 445 avis</span>
+                                </div>
+                                <p class="category">Sentiers historiques, Quartiers</p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/bosque de palermo.jpg" class="opacity-on-hover"
+                                    alt="Bosques de Palermo">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Bosques de Palermo</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">8 233 avis</span>
+                                </div>
+                                <p class="category">Parcs</p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/tango_dark.jpg" class="opacity-on-hover" alt="Cafe Tortoni">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Cafe Tortoni</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">2 938 avis</span>
+                                </div>
+                                <p class="category">Cabarets</p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/ateneo-grand-splendid.jpg" class="opacity-on-hover"
+                                    alt="El Ateneo Grand Splendid">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>El Ateneo Grand Splendid</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">22 890 avis</span>
+                                </div>
+                                <p class="category">Bâtiments architecturaux, Boutiques de souvenirs & Magasins
+                                    spécialisés</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="reposer" class="caroussel">
+                    <div id="reposer-theme" class="caroussel-theme">
+                        <h2>Se reposer</h2>
+                        <p>Un mélange de charme, de symboles et de modernité.</p>
+                        <a href="#">Tout afficher</a>
+                    </div>
+                    <div class="caroussel-items">
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/exterior.jpg" class="opacity-on-hover" alt="Faena Hotel">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Faena Hotel</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">1 728 avis</span>
+                                </div>
+                                <p class="category"></p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/lobby.jpg" class="opacity-on-hover" alt="Alvear Icon Hotel">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Alvear Icon Hotel</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">357 avis</span>
+                                </div>
+                                <p class="category"></p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/home-hotel-buenos-aires.jpg" class="opacity-on-hover"
+                                    alt="Home Hotel Buenos Aires">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Home Hotel Buenos Aires</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">925 avis</span>
+                                </div>
+                                <p class="category"></p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/exterior.jpg" class="opacity-on-hover" alt="Faena Hotel">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Faena Hotel</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">1 728 avis</span>
+                                </div>
+                                <p class="category"></p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/imperiale-suite.jpg" class="opacity-on-hover"
+                                    alt="Algodon Mansion">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Algodon Mansion</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">375 avis</span>
+                                </div>
+                                <p class="category"></p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/four-seasons.jpg" class="opacity-on-hover"
+                                    alt="Four Seasons Hotel Buenos Aires">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Four Seasons Hotel Buenos Aires</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">1 835 avis</span>
+                                </div>
+                                <p class="category"></p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/property-amenity.jpg" class="opacity-on-hover"
+                                    alt="CasaSur Recoleta">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>CasaSur Recoleta</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">1 021 avis</span>
+                                </div>
+                                <p class="category"></p>
+                            </div>
+                        </div>
+                        <div class="caroussel-col">
+                            <div class="caroussel-picture">
+                                <img src="./assets/img/bonito-buenos-aires-san.jpg" class="opacity-on-hover"
+                                    alt="Bonita Buenos Aires, San Telmo">
+                                <button class="like-button">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="caroussel-text">
+                                <h3>Bonita Buenos Aires, San Telmo</h3>
+                                <div>
+                                    <div class="rating-circles">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <i class="fas fa-circle fa-xs"></i>
+                                    </div>
+                                    <span class="rating-counter">165 avis</span>
+                                </div>
+                                <p class="category"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="restaurer" class="caroussel">
+                    <div id="restaurer-theme" class="caroussel-theme">
+                        <h2>Se restaurer</h2>
+                        <p>Bistrots et bars typiques, et plus encore à Buenos Aires.</p>
+                        <a href="#">Tout afficher</a>
+                    </div>
+                    <div class="caroussel-items">
+                        <div class="caroussel-col"></div>
+                        <div class="caroussel-col"></div>
+                        <div class="caroussel-col"></div>
+                        <div class="caroussel-col"></div>
+                        <div class="caroussel-col"></div>
+                        <div class="caroussel-col"></div>
+                        <div class="caroussel-col"></div>
+                        <div class="caroussel-col"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <img src="./assets/img/Tripadvisor_square..svg" alt="Tripadvisor logo">
+        <p>© 2020 <span>
+                <a href="https://www.lereacteur.io/" target="_blank">Le Reacteur</a>
+            </span>Tous droitsréservés.
+        </p>
+        <p>Made by <span>
+                <a href="https://github.com/hysteria9?tab=repositories" target="_blank">Anthony Rovira</a>
+            </span> - 2020</p>
+    </footer>
+</body>
+
+</html>
