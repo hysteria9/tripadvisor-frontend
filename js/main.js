@@ -20,7 +20,7 @@ $.addEventListener("DOMContentLoaded", () => {
     $.querySelector("#login-modal").classList.toggle("login-modal");
   });
 
-  $.querySelector("#signup-form").addEventListener("click", async (event) => {
+  $.querySelector("#signup-form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const newUserData = {
