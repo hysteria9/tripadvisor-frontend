@@ -39,7 +39,19 @@ $.addEventListener("DOMContentLoaded", () => {
     console.log(response);
   });
 
-  $.querySelector("#login-form").addEventListener("click", (event) => {
+  $.querySelector("#login-form").addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    const loginUserData = {
+      email: $.querySelector("#login-email").value,
+      password: $.querySelector("#login-password").value,
+    };
+    console.log(loginUserData);
+
+    const response = await axios.post(
+      "https://f3f6cd0dec39.ngrok.io/login-form",
+      loginUserData
+    );
+    console.log(response);
   });
 });
