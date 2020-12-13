@@ -33,7 +33,7 @@ $.addEventListener("DOMContentLoaded", () => {
     console.log(newUserData);
 
     const response = await axios.post(
-      "https://f3f6cd0dec39.ngrok.io/signup-form",
+      "https://tripadvisor-ba-backend.herokuapp.com/signup-form",
       newUserData,
       {
         headers: {
@@ -54,7 +54,7 @@ $.addEventListener("DOMContentLoaded", () => {
     console.log(loginUserData);
 
     const response = await axios.post(
-      "https://f3f6cd0dec39.ngrok.io/login-form",
+      "https://tripadvisor-ba-backend.herokuapp.com/login-form",
       loginUserData,
       {
         headers: {
