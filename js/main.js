@@ -33,7 +33,7 @@ $.addEventListener("DOMContentLoaded", () => {
     console.log(newUserData);
 
     const response = await axios.post(
-      "http://f3f6cd0dec39.ngrok.io/signup-form",
+      "https://f3f6cd0dec39.ngrok.io/signup-form",
       newUserData,
       {
         headers: {
@@ -54,8 +54,13 @@ $.addEventListener("DOMContentLoaded", () => {
     console.log(loginUserData);
 
     const response = await axios.post(
-      "http://f3f6cd0dec39.ngrok.io/login-form",
-      loginUserData
+      "https://f3f6cd0dec39.ngrok.io/login-form",
+      loginUserData,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     );
     console.log(response);
   });
