@@ -430,10 +430,10 @@ h2 {
 /*______ SECTION2 : IMMANQUABLES ______*/
 
 .caroussel {
+  position: relative;
   height: 350px;
   display: flex;
   flex-direction: row;
-  overflow: hidden;
 }
 
 .caroussel-theme {
@@ -487,11 +487,36 @@ h2 {
   width: calc(100% / 3 - (40px / 3));
   box-sizing: border-box;
   flex-shrink: 0;
-  /*counter-increment: gallery-cell;*/
 }
 
 .caroussel-col:not(:last-child) {
   margin-right: 20px;
+}
+
+.caroussel-arrows {
+  cursor: pointer;
+  background-color: var(--color-white);
+  border: solid 2px var(--color-black);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+}
+
+.caroussel-arrows:hover {
+  filter: invert();
+  border: solid 2px var(--color-white);
+}
+
+#left-arrow {
+  left: 300px;
+  top: 90px;
+}
+
+#right-arrow {
+  right: -20px;
+  top: 90px;
 }
 
 .caroussel-picture {
